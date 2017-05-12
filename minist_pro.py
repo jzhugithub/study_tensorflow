@@ -69,13 +69,15 @@ def main(_):
 
     # The raw formulation of cross-entropy,
     cross_entropy = -tf.reduce_sum(y_ * tf.log(y_conv))
+    # y = tf.matmul(h_fc1_drop, W_fc2) + b_fc2
+    # cross_entropy = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y_, logits=y))
     train_step = tf.train.AdamOptimizer(1e-4).minimize(cross_entropy)
     correct_prediction = tf.equal(tf.argmax(y_conv, 1), tf.argmax(y_, 1))
+    # correct_prediction = tf.equal(tf.argmax(y, 1), tf.argmax(y_, 1))
     accuracy = tf.reduce_mean(tf.cast(correct_prediction, "float"))
 
     sess = tf.InteractiveSession()
-    tf.global_variables_initializer().run()
-    sess.run(tf.initialize_all_variables())
+    sess.run(tf.global_variables_initializer())
     # Train
     for i in range(100):
         batch = mnist.train.next_batch(50)
