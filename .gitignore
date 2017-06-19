@@ -4,3 +4,4 @@ iris_training.csv
 boston_predict.csv
 boston_test.csv
 boston_train.csv
+*.csv
