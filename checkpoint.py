@@ -27,7 +27,7 @@ with tf.device('/cpu:0'):
     x_data = np.reshape(np.random.rand(10).astype(np.float32), (10, 1))
 
     with tf.Session() as sess:
-        sess.run(tf.initialize_all_variables())
+        sess.run(tf.global_variables_initializer())
         if isTrain:
             for i in xrange(train_steps):
                 sess.run(train, feed_dict={x: x_data})
