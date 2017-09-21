@@ -44,7 +44,7 @@ cnn_minist.py: build, train and evaluate CNN to `classify image` on minist
 
 Instruction of checkpoint. 
 
-##read_data.py
+## read_data.py
 
 Instruction of read in batch with reader.
 
